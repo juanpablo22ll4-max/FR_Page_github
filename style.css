@@ -253,7 +253,7 @@ align-items:center;
 
 z-index:1000;
 
-background:var(--dark);
+background:rgba(0,0,0,.15);
 
 backdrop-filter:blur(15px);
 
@@ -265,18 +265,18 @@ transition:.4s;
 
 .logo{
 
-font-size:50px;
+font-size:30px;
 
 font-weight:800;
 
 letter-spacing:2px;
 
-color: var(--secondary);
+color: red;
 
 }
 
 .logo span{
-font-size: 20px;
+
 color:rgb(255, 255, 255);
 
 }
@@ -953,6 +953,163 @@ z-index:2;
 
 }
 
+/* ==================================
+TESTIMONIALS
+================================== */
+
+.testimonials{
+
+padding:140px 8%;
+
+background:#0d1224;
+
+text-align:center;
+
+}
+
+.testimonial-slider{
+
+max-width:900px;
+
+margin:auto;
+
+position:relative;
+
+min-height:250px;
+
+}
+
+.testimonial{
+
+display:none;
+
+animation:fadeTestimonial 1s ease;
+
+}
+
+.testimonial.active{
+
+display:block;
+
+}
+
+@keyframes fadeTestimonial{
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+.stars{
+
+font-size:2rem;
+
+color:#ffd700;
+
+margin-bottom:20px;
+
+letter-spacing:5px;
+
+}
+
+.testimonial p{
+
+font-size:1.3rem;
+
+line-height:1.8;
+
+color:#e2e2e2;
+
+margin-bottom:25px;
+
+font-style:italic;
+
+}
+
+.testimonial h4{
+
+font-size:1.1rem;
+
+color:var(--primary);
+
+font-weight:600;
+
+}
+
+/* ==================================
+CLIENTS
+================================== */
+
+.clients{
+
+padding:120px 0;
+
+background:#050816;
+
+overflow:hidden;
+
+}
+
+.clients h2{
+
+margin-bottom:70px;
+
+}
+
+.logos{
+
+display:flex;
+
+gap:80px;
+
+width:max-content;
+
+animation:scrollLogos 25s linear infinite;
+
+}
+
+.logos i{
+
+font-size:70px;
+
+color:rgba(255,255,255,.35);
+
+transition:.4s;
+
+}
+
+.logos i:hover{
+
+color:var(--primary);
+
+transform:scale(1.15);
+
+}
+
+@keyframes scrollLogos{
+
+0%{
+transform:translateX(0);
+}
+
+100%{
+transform:translateX(-50%);
+}
+
+}
 
 /* ==================================
 PRICING
