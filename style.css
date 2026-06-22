@@ -265,9 +265,9 @@ transition:.4s;
 
 .logo{
 
-font-size:50px;
+font-size:5vh;
 
-font-weight:800;
+font-weight:800%;
 
 letter-spacing:2px;
 
@@ -543,6 +543,7 @@ linear-gradient(
 
 }
 
+
 .stat-box{
 
 background:var(--glass);
@@ -553,7 +554,13 @@ backdrop-filter:blur(15px);
 
 border-radius:25px;
 
-padding:40px 20px;
+padding:20px 10px;
+
+display: flex;
+
+justify-content: center;
+
+align-items: center;
 
 text-align:center;
 
@@ -577,9 +584,11 @@ font-size:4rem;
 
 color:var(--primary);
 
-font-weight:800;
+font-weight:500;
 
 margin-bottom:10px;
+
+
 
 }
 
