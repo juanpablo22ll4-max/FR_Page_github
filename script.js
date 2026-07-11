@@ -1,538 +1,528 @@
 /* ==================================
-PRELOADER
+   PRELOADER
 ================================== */
 
-window.addEventListener("load", () => {
+window.addEventListener("load",()=>{
 
-document.body.classList.add("loaded");
+    document.body.classList.add("loaded");
 
-setTimeout(() => {
+    const preloader = document.getElementById("preloader");
 
-const preloader =
-document.getElementById("preloader");
+    if(preloader){
 
-if(preloader){
-preloader.style.display = "none";
-}
+        setTimeout(()=>{
 
-},1000);
+            preloader.style.display="none";
+
+        },1000);
+
+    }
 
 });
+
+
+
+
 
 /* ==================================
-AOS
+   AOS
 ================================== */
 
-AOS.init({
+if(typeof AOS !== "undefined"){
 
-duration:1200,
+    AOS.init({
 
-once:true,
+        duration:1200,
 
-offset:100
+        once:true,
 
-});
+        offset:100
 
-/* ==================================
-MENU HAMBURGUESA
-================================== */
-
-const menuBtn =
-document.querySelector(".menu-btn");
-
-const navLinks =
-document.querySelector(".nav-links");
-
-if(menuBtn){
-
-menuBtn.addEventListener("click",()=>{
-
-navLinks.classList.toggle("active");
-
-});
+    });
 
 }
 
+
+
+
+
 /* ==================================
-CERRAR MENU AL HACER CLICK
+   MENU HAMBURGUESA
 ================================== */
 
-document
-.querySelectorAll(".nav-links a")
+
+const menuBtn = document.querySelector(".menu-btn");
+
+const navLinks = document.querySelector(".nav-links");
+
+
+if(menuBtn && navLinks){
+
+
+    menuBtn.addEventListener("click",()=>{
+
+        navLinks.classList.toggle("active");
+
+    });
+
+
+}
+
+
+
+
+/* ==================================
+   CERRAR MENU
+================================== */
+
+
+document.querySelectorAll(".nav-links a")
 .forEach(link=>{
 
-link.addEventListener("click",()=>{
 
-navLinks.classList.remove("active");
+    link.addEventListener("click",()=>{
+
+
+        if(navLinks){
+
+            navLinks.classList.remove("active");
+
+        }
+
+
+    });
+
 
 });
 
-});
+
+
+
+
 
 /* ==================================
-NAVBAR SCROLL
+   NAVBAR SCROLL
 ================================== */
 
-const navbar =
-document.querySelector(".navbar");
+
+const navbar = document.querySelector(".navbar");
+
+
+if(navbar){
+
 
 window.addEventListener("scroll",()=>{
 
-if(window.scrollY > 80){
 
-navbar.style.padding =
-"15px 8%";
+    if(window.scrollY > 80){
 
-navbar.style.background =
-"rgba(0,0,0,.6)";
 
-}else{
+        navbar.classList.add("scrolled");
 
-navbar.style.padding =
-"25px 8%";
 
-navbar.style.background =
-"rgba(0,0,0,.15)";
+    }else{
+
+
+        navbar.classList.remove("scrolled");
+
+
+    }
+
+
+});
+
 
 }
 
-});
+
+
+
 
 /* ==================================
-CONTADORES
+   PORTFOLIO SLIDER
 ================================== */
 
-const counters =
-document.querySelectorAll(".counter");
 
-const startCounters = ()=>{
+const slides = document.querySelectorAll(".slide");
 
-counters.forEach(counter=>{
-
-const target =
-+counter.dataset.target;
-
-const updateCounter = ()=>{
-
-const current =
-+counter.innerText;
-
-const increment =
-target / 120;
-
-if(current < target){
-
-counter.innerText =
-Math.ceil(current + increment);
-
-setTimeout(
-updateCounter,
-20
-);
-
-}else{
-
-counter.innerText =
-target;
-
-}
-
-};
-
-updateCounter();
-
-});
-
-};
-
-let counterStarted = false;
-
-window.addEventListener("scroll",()=>{
-
-const stats =
-document.querySelector(".stats");
-
-if(!stats) return;
-
-const top =
-stats.getBoundingClientRect().top;
-
-if(top < window.innerHeight &&
-!counterStarted){
-
-counterStarted = true;
-
-startCounters();
-
-}
-
-});
-
-/* ==================================
-PORTFOLIO SLIDER
-================================== */
-
-const slides =
-document.querySelectorAll(".slide");
 
 let currentSlide = 0;
 
+
+
 function nextSlide(){
 
-if(slides.length === 0) return;
 
-slides[currentSlide]
-.classList.remove("active");
+    if(slides.length <= 1) return;
 
-currentSlide++;
 
-if(currentSlide >= slides.length){
 
-currentSlide = 0;
+    slides[currentSlide].classList.remove("active");
+
+
+    currentSlide++;
+
+
+    if(currentSlide >= slides.length){
+
+        currentSlide=0;
+
+    }
+
+
+
+    slides[currentSlide].classList.add("active");
+
 
 }
 
-slides[currentSlide]
-.classList.add("active");
+
+
+if(slides.length){
+
+    setInterval(nextSlide,5000);
 
 }
-
-setInterval(nextSlide,5000);
 
 /* ==================================
-TESTIMONIALS
+   FAQ
 ================================== */
 
-const testimonials =
-document.querySelectorAll(".testimonial");
 
-let testimonialIndex = 0;
+const faqItems = document.querySelectorAll(".faq-item");
 
-function nextTestimonial(){
-
-if(testimonials.length === 0) return;
-
-testimonials[testimonialIndex]
-.classList.remove("active");
-
-testimonialIndex++;
-
-if(
-testimonialIndex >= testimonials.length
-){
-
-testimonialIndex = 0;
-
-}
-
-testimonials[testimonialIndex]
-.classList.add("active");
-
-}
-
-setInterval(nextTestimonial,4000);
-
-/* ==================================
-FAQ
-================================== */
-
-const faqItems =
-document.querySelectorAll(".faq-item");
 
 faqItems.forEach(item=>{
 
-const question =
-item.querySelector(".faq-question");
 
-question.addEventListener("click",()=>{
+    const question = item.querySelector(".faq-question");
 
-item.classList.toggle("active");
+
+    if(question){
+
+
+        question.addEventListener("click",()=>{
+
+
+            item.classList.toggle("active");
+
+
+        });
+
+
+    }
+
 
 });
 
-});
+
+
+
+
 
 /* ==================================
-CURSOR PERSONALIZADO
+   CURSOR PERSONALIZADO
 ================================== */
 
-const cursor =
-document.querySelector(".cursor");
 
-document.addEventListener("mousemove",(e)=>{
+const cursor = document.querySelector(".cursor");
 
-if(!cursor) return;
 
-cursor.style.left =
-e.clientX + "px";
-
-cursor.style.top =
-e.clientY + "px";
-
-});
-
-document
-.querySelectorAll("a, button")
-.forEach(el=>{
-
-el.addEventListener("mouseenter",()=>{
 
 if(cursor){
 
-cursor.style.width = "40px";
-cursor.style.height = "40px";
+
+    document.addEventListener("mousemove",(e)=>{
+
+
+        cursor.style.left = e.clientX + "px";
+
+        cursor.style.top = e.clientY + "px";
+
+
+    });
+
+
+
+
+
+    document.querySelectorAll("a, button")
+    .forEach(element=>{
+
+
+        element.addEventListener("mouseenter",()=>{
+
+
+            cursor.style.width="40px";
+
+            cursor.style.height="40px";
+
+
+        });
+
+
+
+
+        element.addEventListener("mouseleave",()=>{
+
+
+            cursor.style.width="20px";
+
+            cursor.style.height="20px";
+
+
+        });
+
+
+    });
+
 
 }
 
-});
 
-el.addEventListener("mouseleave",()=>{
 
-if(cursor){
 
-cursor.style.width = "20px";
-cursor.style.height = "20px";
 
-}
-
-});
-
-});
 
 /* ==================================
-PARTICULAS
+   FORMULARIO WHATSAPP
 ================================== */
 
-const particlesContainer =
-document.getElementById("particles");
 
-if(particlesContainer){
+const contactForm = document.getElementById("contactForm");
 
-for(let i=0;i<60;i++){
 
-const particle =
-document.createElement("div");
-
-particle.classList.add("particle");
-
-const size =
-Math.random()*6 + 2;
-
-particle.style.width =
-size + "px";
-
-particle.style.height =
-size + "px";
-
-particle.style.left =
-Math.random()*100 + "%";
-
-particle.style.animationDuration =
-Math.random()*15 + 8 + "s";
-
-particle.style.animationDelay =
-Math.random()*5 + "s";
-
-particlesContainer
-.appendChild(particle);
-
-}
-
-}
-
-/* ==================================
-DARK MODE AUTOMATICO
-================================== */
-
-if(
-window.matchMedia(
-"(prefers-color-scheme: dark)"
-).matches
-){
-
-document.body.classList.add("dark");
-
-}
-
-/* ==================================
-FORMULARIO WHATSAPP
-================================== */
-
-const contactForm =
-document.getElementById("contactForm");
 
 if(contactForm){
 
-contactForm.addEventListener(
-"submit",
-function(e){
 
-e.preventDefault();
+    contactForm.addEventListener("submit",(e)=>{
 
-const nombre =
-this.querySelector(
-'input[type="text"]'
-).value;
 
-const correo =
-this.querySelector(
-'input[type="email"]'
-).value;
+        e.preventDefault();
 
-const mensaje =
-this.querySelector(
-'textarea'
-).value;
 
-const texto =
 
-`Hola, mi nombre es ${nombre}%0A%0A` +
+        const nombre =
+        contactForm.querySelector('[name="nombre"]').value;
 
-`Correo: ${correo}%0A%0A` +
 
-`Mensaje:%0A${mensaje}`;
 
-window.open(
+        const correo =
+        contactForm.querySelector('[name="correo"]').value;
 
-`https://wa.me/1234567890?text=${texto}`,
 
-"_blank"
 
-);
+        const mensaje =
+        contactForm.querySelector('[name="mensaje"]').value;
 
-});
+
+
+
+        const texto =
+
+        `Hola, mi nombre es ${nombre}%0A%0A` +
+
+        `Correo: ${correo}%0A%0A` +
+
+        `Mensaje:%0A${mensaje}`;
+
+
+
+
+        window.open(
+
+        `https://wa.me/1234567890?text=${texto}`,
+
+        "_blank"
+
+        );
+
+
+    });
+
 
 }
 
+
+
+
+
+
+
 /* ==================================
-REVEAL ON SCROLL
+   REVEAL SCROLL
 ================================== */
 
-const reveals =
-document.querySelectorAll(".fade-up");
+
+const reveals = document.querySelectorAll(".fade-up");
+
+
 
 function revealElements(){
 
-reveals.forEach(element=>{
 
-const top =
-element.getBoundingClientRect().top;
+    reveals.forEach(element=>{
 
-if(top < window.innerHeight - 100){
 
-element.classList.add("show");
+        const position =
+        element.getBoundingClientRect().top;
+
+
+
+        if(position < window.innerHeight - 100){
+
+
+            element.classList.add("show");
+
+
+        }
+
+
+    });
+
 
 }
 
-});
+
+
+if(reveals.length){
+
+
+    window.addEventListener(
+
+        "scroll",
+
+        revealElements
+
+    );
+
+
+    revealElements();
+
 
 }
 
-window.addEventListener(
-"scroll",
-revealElements
-);
 
-revealElements();
+
+
+
 
 /* ==================================
-SCROLL TO TOP
+   SCROLL TOP BUTTON
 ================================== */
 
-const scrollButton =
-document.createElement("div");
+
+const scrollButton = document.createElement("div");
+
 
 scrollButton.innerHTML =
 '<i class="fas fa-chevron-up"></i>';
 
-scrollButton.classList.add(
-"scroll-top"
-);
 
-document.body.appendChild(
-scrollButton
-);
 
-scrollButton.style.position =
-"fixed";
+scrollButton.classList.add("scroll-top");
 
-scrollButton.style.bottom =
-"100px";
 
-scrollButton.style.right =
-"25px";
 
-scrollButton.style.width =
-"50px";
+document.body.appendChild(scrollButton);
 
-scrollButton.style.height =
-"50px";
 
-scrollButton.style.display =
-"flex";
 
-scrollButton.style.alignItems =
-"center";
+Object.assign(scrollButton.style,{
 
-scrollButton.style.justifyContent =
-"center";
 
-scrollButton.style.borderRadius =
-"50%";
+    position:"fixed",
 
-scrollButton.style.background =
-"#00e5ff";
+    bottom:"100px",
 
-scrollButton.style.color =
-"#000";
+    right:"25px",
 
-scrollButton.style.cursor =
-"pointer";
+    width:"50px",
 
-scrollButton.style.opacity =
-"0";
+    height:"50px",
 
-scrollButton.style.transition =
-".3s";
+    display:"flex",
 
-scrollButton.style.zIndex =
-"999";
+    alignItems:"center",
+
+    justifyContent:"center",
+
+    borderRadius:"50%",
+
+    background:"#640000",
+
+    color:"#fff",
+
+    cursor:"pointer",
+
+    opacity:"0",
+
+    transition:".3s",
+
+    zIndex:"999"
+
+
+
+});
+
+
+
+
+
 
 window.addEventListener("scroll",()=>{
 
-if(window.scrollY > 400){
 
-scrollButton.style.opacity =
-"1";
+    if(window.scrollY > 400){
 
-}else{
 
-scrollButton.style.opacity =
-"0";
+        scrollButton.style.opacity="1";
 
-}
 
-});
+    }else{
 
-scrollButton.addEventListener(
-"click",
-()=>{
 
-window.scrollTo({
+        scrollButton.style.opacity="0";
 
-top:0,
 
-behavior:"smooth"
+    }
+
 
 });
 
-}
-);
+
+
+
+
+
+scrollButton.addEventListener("click",()=>{
+
+
+    window.scrollTo({
+
+
+        top:0,
+
+
+        behavior:"smooth"
+
+
+    });
+
+
+});
+
+
+
+
+
 
 /* ==================================
-FIN
+   FINAL
 ================================== */
 
+
 console.log(
-"WEB PRO PREMIUM CARGADO"
+"FR Creative Studio cargado correctamente"
 );
