@@ -213,7 +213,7 @@ CURSOR
 
         z-index:999999;
 
-        transition:.2s;
+        transition: 0;s;
 
     }
 
@@ -238,7 +238,7 @@ NAVBAR
 
     width:100%;
 
-    padding:25px 8%;
+    padding:15px 8%;
 
     display:flex;
 
@@ -248,13 +248,12 @@ NAVBAR
 
     z-index:1000;
 
-    background:rgba(0,0,0,.05);
-
-    border-bottom:1px solid rgba(255,255,255,.05);
+    background:black !important;
 
     transition:.4s;
 
 }
+
 
 
 
@@ -264,7 +263,7 @@ NAVBAR
 
     padding:15px 8%;
 
-    box-shadow:0 5px 20px rgba(0,0,0,.15);
+    box-shadow:0 5px 20px rgba(255, 255, 255, 0.15);
 
 }
 
@@ -272,7 +271,7 @@ NAVBAR
 
 .navbar.scrolled .nav-links a{
 
-    color:#111;
+    color:#ffffff;
 
 }
 
@@ -312,6 +311,8 @@ NAVBAR
     position:relative;
 
     transition:.3s;
+
+    color:#fff;
 
 }
 
@@ -441,7 +442,7 @@ HERO
 
     font-weight:700;
 
-    color:#000;
+    color:#ffffff;
 
     line-height:1.2;
 
@@ -576,6 +577,8 @@ section h2{
 
     font-weight:800;
 
+    color:#ffffff;
+
 }
 
 
@@ -585,6 +588,7 @@ section h2{
 /* =========================
 STATS
 ========================= */
+
 
 
 .stats{
@@ -641,8 +645,7 @@ STATS
 
     font-size:4rem;
 
-    color:var(--primary);
-
+    color: rgb(227, 28, 28)
 }
 
 
@@ -658,7 +661,7 @@ SERVICES
 
     padding:140px 8%;
 
-    background:#0d1224;
+    background:#ffffff;
 
 }
 
@@ -682,9 +685,9 @@ SERVICES
 
     overflow:hidden;
 
-    background:rgba(255,255,255,.05);
+    background:rgba(0, 0, 0, 0.05);
 
-    border:1px solid rgba(255,255,255,.08);
+    border:1px solid rgba(255, 0, 0, 0.08);
 
     backdrop-filter:blur(18px);
 
@@ -726,13 +729,15 @@ SERVICES
 
     margin-bottom:15px;
 
+    color: rgb(0, 0, 0)
+
 }
 
 
 
 .service-card p{
 
-    color:#ccc;
+    color:#000000;
 
 }
 
@@ -820,7 +825,13 @@ PRICING
 
     padding:150px 8%;
 
-    background:#0d1224;
+    background:#ffffff;
+
+}
+
+.pricing h2{
+
+    color: rgb(0, 0, 0)
 
 }
 
@@ -840,9 +851,9 @@ PRICING
 
 .price-card{
 
-    background:rgba(255,255,255,.05);
+    background:rgba(37, 1, 1, 0.05);
 
-    border:1px solid rgba(255,255,255,.1);
+    border:2px solid rgba(10, 10, 10, 0.1);
 
     border-radius:30px;
 
@@ -1017,9 +1028,15 @@ CONTACT
 
     padding:150px 8%;
 
-    background:#0d1224;
+    background:#ffffff;
 
     text-align:center;
+
+}
+
+.contact h2{
+
+    color: rgb(0, 0, 0)
 
 }
 
@@ -1048,13 +1065,13 @@ CONTACT
 
     padding:18px 22px;
 
-    background:rgba(255,255,255,.05);
+    background:rgba(0, 0, 0, 0.05);
 
-    border:1px solid rgba(255,255,255,.1);
+    border:1px solid rgba(2, 2, 2, 0.1);
 
     border-radius:15px;
 
-    color:white;
+    color:rgb(0, 0, 0);
 
     font-size:1rem;
 
@@ -1082,7 +1099,7 @@ CONTACT
 
     background:var(--primary);
 
-    color:white;
+    color:rgb(0, 0, 0);
 
     font-weight:700;
 
